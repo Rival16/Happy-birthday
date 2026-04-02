@@ -1,0 +1,694 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(-45deg, #f9d6eb, #f8b4d9, #c6e6f5, #a4d3f4);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #333;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.hero {
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  color: #f3e9ed;
+  text-shadow: 0 0 10px rgba(255, 192, 203, 0.6),
+               0 0 20px rgba(164, 228, 250, 0.6);
+}
+
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+#surpriseBtn {
+  padding: 12px 24px;
+  background: #FFB6C1;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+#surpriseBtn:hover {
+  background: #FF69B4;
+}
+
+.message {
+  padding: 40px 20px;
+  background: rgba(255,255,255,0.3);
+  margin-top: 30px;
+  border-radius: 20px;
+}
+
+.message h2 {
+  font-size: 2rem;
+  color: #8A2BE2;
+  margin-bottom: 20px;
+}
+
+#typed-text {
+  font-size: 1.2rem;
+  min-height: 50px;
+}
+
+.gallery {
+  padding: 40px 20px;
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  color: #20B2AA;
+  margin-bottom: 20px;
+}
+
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.photos img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+.photos img:hover {
+  transform: scale(1.05);
+}
+
+/* Confetti canvas full screen */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* supaya klik tidak terganggu */
+  z-index: 999;
+}
+
+/* Balon terbang */
+.balloons {
+  position: fixed;
+  bottom: -150px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  z-index: 1;
+}
+
+.balloons img {
+  width: 80px;
+  animation: floatUp 12s linear infinite;
+}
+
+.balloons img:nth-child(2) {
+  animation-delay: 4s;
+}
+.balloons img:nth-child(3) {
+  animation-delay: 8s;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+/* Modal Surprise */
+.modal {
+  display: none; /* hidden default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 400px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  text-align: center;
+  animation: popUp 0.4s ease;
+}
+
+.modal-content h2 {
+  color: #FF69B4;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.gift-img {
+  width: 100px;
+  animation: bounce 1.5s infinite;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes popUp {
+  0% {transform: scale(0.8); opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@keyframes bounce {
+  0%, 100% {transform: translateY(0);}
+  50% {transform: translateY(-10px);}
+}
+
+/* Kotak kado */
+.gift-box {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+}
+
+.box {
+  position: absolute;
+  bottom: 0;
+  width: 150px;
+  height: 100px;
+  background: #FF69B4;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.lid {
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 40px;
+  background: #FF85C1;
+  border-radius: 5px;
+  transform-origin: left center;
+  transition: transform 0.6s ease;
+  z-index: 2;
+}
+
+.ribbon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 150px;
+  background: #FFF;
+  z-index: 1;
+}
+
+/* Pesan hadiah */
+.gift-message {
+  opacity: 0;
+  transition: opacity 1s ease;
+  margin-top: 20px;
+}
+
+/* Ketika modal aktif -> animasi kado terbuka */
+.modal.show .lid {
+  transform: rotate(-45deg) translate(-20px, -20px);
+}
+.modal.show .gift-message {
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;                /* flex bukan none */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;          /* supaya klik nggak kena waktu hidden */
+  transition: opacity 0.4s ease;
+  z-index: 1000;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+  padding: 30px;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 400px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  text-align: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Kotak kado */
+.gift-box {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+}
+
+.box {
+  position: absolute;
+  bottom: 0;
+  width: 150px;
+  height: 100px;
+  background: #FF69B4;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.lid {
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 40px;
+  background: #FF85C1;
+  border-radius: 5px;
+  transform-origin: left center;
+  z-index: 2;
+  transition: transform 0.6s ease;  /* animasi putar */
+}
+
+.ribbon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 150px;
+  background: #FFF;
+  z-index: 1;
+}
+
+/* Pesan hadiah */
+.gift-message {
+  opacity: 0;
+  transition: opacity 1s ease;
+  margin-top: 20px;
+}
+
+/* Saat modal show → lid mutar, message fade in */
+.modal.show .lid {
+  transform: rotate(-45deg) translate(-20px, -20px);
+}
+
+.modal.show .gift-message {
+  opacity: 1;
+}
+
+
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  #surpriseBtn {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+
+  .message h2,
+  .gallery h2 {
+    font-size: 1.5rem;
+  }
+
+  .photos img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .gift-box {
+    width: 100px;
+    height: 100px;
+  }
+  .box {
+    width: 100px;
+    height: 70px;
+  }
+  .lid {
+    width: 100px;
+    height: 30px;
+  }
+  .ribbon {
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.4rem;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  .photos img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Overlay lock */
+#lock-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(-45deg, #f9d6eb, #f8b4d9, #c6e6f5, #a4d3f4);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.lock-content {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.lock-content h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+#countdown {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ff69b4;
+  margin-bottom: 20px;
+}
+
+#forceOpen {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  background: #ff69b4;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+#forceOpen:hover {
+  background: #ff85c1;
+}
+
+/* isi utama tersembunyi dulu */
+#main-content {
+  display: none;
+}
+
+.gallery {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.gallery h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #ff6f91;
+  margin-bottom: 20px;
+}
+
+.photos {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.photos img {
+  width: 200px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  opacity: 0;                    /* awalnya transparan */
+  transform: translateY(30px);   /* geser turun dulu */
+  transition: all 0.8s ease;     /* transisi smooth */
+}
+
+/* saat container terlihat di viewport, tambahkan class 'show' */
+.photos img.show {
+  opacity: 1;
+  transform: translateY(0);
+  animation: bounce 3s infinite ease-in-out;
+}
+
+/* Album Zig Zag Styles */
+.album-zigzag {
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 40px 0;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.album-zigzag h2 {
+  font-size: 2rem;
+  color: #ff6f91;
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.album-container {
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.photo-stack {
+  position: relative;
+  width: 280px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.photo-stack img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: all 0.4s ease;
+  display: block;
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.9);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ff69b4;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.photo-stack:hover .photo-caption {
+  opacity: 1;
+  bottom: -40px;
+}
+
+.photo-stack:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* Posisi zig zag dengan kemiringan 15 derajat */
+.photo-1 {
+  transform: rotate(-15deg) translateY(-20px);
+  z-index: 1;
+}
+
+.photo-2 {
+  transform: rotate(15deg) translateY(20px);
+  z-index: 2;
+}
+
+.photo-3 {
+  transform: rotate(-15deg) translateY(-10px);
+  z-index: 1;
+}
+
+/* Responsive: untuk layar kecil, zig zag tetap tapi posisi disesuaikan */
+@media (max-width: 768px) {
+  .album-container {
+    flex-direction: column;
+    gap: 60px;
+  }
+  
+  .photo-stack {
+    width: 240px;
+  }
+  
+  .photo-stack img {
+    height: 280px;
+  }
+  
+  .photo-1 {
+    transform: rotate(-15deg) translateY(0);
+  }
+  
+  .photo-2 {
+    transform: rotate(15deg) translateY(0);
+  }
+  
+  .photo-3 {
+    transform: rotate(-15deg) translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-stack {
+    width: 200px;
+  }
+  
+  .photo-stack img {
+    height: 240px;
+  }
+  
+  .photo-caption {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  
+  .photo-stack:hover .photo-caption {
+    bottom: -35px;
+  }
+}
+
+/* Opacity Control Styles */
+.opacity-control {
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50px;
+  display: inline-block;
+  width: auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.opacity-control label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #ff69b4;
+  margin-right: 15px;
+  font-size: 0.9rem;
+}
+
+#opacitySlider {
+  width: 200px;
+  cursor: pointer;
+  accent-color: #ff69b4;
+}
+
+#opacityValue {
+  font-weight: bold;
+  color: #ff69b4;
+  margin-left: 10px;
+}

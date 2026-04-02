@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <canvas id="confetti-canvas"></canvas>
+    <div class="hero">
+      <h1>🎉Happy Birthday <span id="name">Princess</span> 🎉</h1>
+      <p class="subtitle">A little surprise just for you</p>
+      <button id="surpriseBtn">Open Surprise 🎁</button>
+      <div class="balloons">
+        <img src="assets/img/pngegg.png" alt="Balon 1" />
+        <img
+          src="assets/img/image-from-rawpixel-id-15039518-png.png"
+          alt="Balon 2"
+        />
+        <img
+          src="assets/img/imgbin_adb24438f57ccc185211244ea1d0278c.png"
+          alt="Balon 3"
+        />
+      </div>
+    </div>
+
+    <section class="message">
+      <h2>My Wish for You</h2>
+      <p id="typed-text"></p>
+    </section>
+
+    <!-- Popup Surprise -->
+    <div class="modal" id="giftModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <div class="gift-box">
+          <div class="lid"></div>
+          <div class="box"></div>
+          <div class="ribbon"></div>
+        </div>
+
+        <div class="gift-message">
+          <h2>🎉 Selamat Ulang Tahun Princess!</h2>
+          <p>
+            "Happy birthday, putri elsa dwi utami 🎂✨, semoga umur barumu penuh berkah,
+            kesehatan, dan kebahagiaan; may all your dreams come true, kecuali
+            kalau mimpinya jauh dari aku (that’s illegal 😅). Semoga langkahmu
+            selalu dimudahkan, rezekimu diluaskan, dan senyummu tetap jadi
+            alasan aku betah di dunia ini—because honestly, you’re my favorite
+            notification."❤️
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- lock screen overlay -->
+    <div id="lock-screen">
+      <div class="lock-content">
+        <h1>🎉 Surprise ini baru bisa dibuka pada 06 april jam 00:01 🎉</h1>
+        <p id="countdown"></p>
+        <button id="forceOpen">Buka jika sudah waktunya</button>
+      </div>
+    </div>
+
+    <!-- isi utama -->
+    <div id="main-content">
+      <!-- isi halaman surprise lu -->
+    </div>
+
+    <section class="gallery">
+      <h2>Your Gallery</h2>
+      <div class="photos">
+        <img src="assets/img/putri-10.webp" alt="Memory 1" />
+        <img src="assets/img/putri-12.webp" alt="Memory 2" />
+        <img src="assets/img/putri-11.webp" alt="Memory 3" />
+        <img src="assets/img/putri-4.webp" alt="Memory 4" />
+        <img src="assets/img/putri-5.webp" alt="Memory 5" />
+        <img src="assets/img/putri-6.webp" alt="Memory 6" />
+        <img src="assets/img/putri-7.webp" alt="Memory 7" />
+        <img src="assets/img/putri-8.webp" alt="Memory 8" />
+        <img src="assets/img/putri-9.webp" alt="Memory 9" />
+      </div>
+    </section>
+
+    <audio
+      id="bg-music"
+      src="assets/audio/Happy Birthday to You Lullaby.flac"
+      autoplay
+      loop
+    ></audio>
+
+    <!-- Album Foto dengan Efek Zig Zag -->
+<section class="album-zigzag">
+  <h2>📸 Our Beautiful Moments</h2>
+  <div class="album-container">
+    <div class="photo-stack photo-1">
+      <img src="assets/img/putri-1.webp" alt="Memory 1">
+      <div class="photo-caption">✨ Beautiful Day ✨</div>
+    </div>
+    <div class="photo-stack photo-2">
+      <img src="assets/img/putri-2.webp" alt="Memory 2">
+      <div class="photo-caption">💖 Sweet Moment 💖</div>
+    </div>
+    <div class="photo-stack photo-3">
+      <img src="assets/img/putri-3.webp" alt="Memory 3">
+      <div class="photo-caption">🎀 Happy Together 🎀</div>
+    </div>
+  </div>
+  <div class="opacity-control">
+    <label for="opacitySlider">Album Photo Opacity: <span id="opacityValue">0.85</span></label>
+    <input type="range" id="opacitySlider" min="0.3" max="1" step="0.01" value="0.85">
+  </div>
+</section>
+
+    <!-- Tambahin di dalam <body>, paling bawah -->
+    <div id="camera-section" style="margin-top: 40px; text-align: center">
+      <h2>📸 Happy Birthday Camera</h2>
+      <video
+        id="camera"
+        autoplay
+        playsinline
+        style="
+          width: 100%;
+          max-width: 400px;
+          border: 3px solid #ff69b4;
+          border-radius: 20px;
+        "
+      ></video>
+      <br />
+      <button
+        id="snapBtn"
+        style="
+          margin-top: 10px;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 8px;
+          background: #ff69b4;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+        "
+      >
+        🎉 Ambil Foto
+      </button>
+      <canvas
+        id="snapshot"
+        style="
+          display: none;
+          margin-top: 15px;
+          border: 2px dashed #ff69b4;
+          border-radius: 12px;
+        "
+      ></canvas>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
