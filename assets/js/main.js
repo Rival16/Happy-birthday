@@ -131,7 +131,7 @@ const mainContent = document.getElementById('main-content');
 const countdown = document.getElementById('countdown');
 
 // TARGET WAKTU: 6 April 2026, 00:01:00
-const targetDate = new Date(2026, 3, 2, 13, 18, 0);
+const targetDate = new Date(2026, 3, 6, 0, 1, 0);
 
 function showMainContent() {
   lockScreen.style.display = 'none';
